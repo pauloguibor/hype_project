@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import Carrinho from '@/components/home/Carrinho.vue'
 import ItensCarrinho from '@/components/home/ItensCarrinho.vue'
+import ItensFavoritos from '@/components/home/ItensFavoritos.vue'
+
 
 import Produtos from '@/components/home/Produtos.vue'
 
@@ -15,9 +17,6 @@ const routes =[{
     name: 'cart',
     path: '/cart',
     component: Carrinho,
-    children:[
-        {path: 'itens', component: ItensCarrinho}
-    ]
 },{
     name: 'pedidos',
     path: '/pedidos',
@@ -31,6 +30,16 @@ const routes =[{
     name: 'produtos',
     path: '/',
     component: Produtos
+},
+{
+    name: 'Itens',
+    path: '/cartItens',
+    component: ItensCarrinho
+},
+{
+    name: 'favoritos',
+    path: '/favoriteItens',
+    component: ItensFavoritos
 }]
 
 export default new VueRouter({

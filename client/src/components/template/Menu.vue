@@ -57,12 +57,12 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   position: fixed;
-  left: 15px;
+  left: 0px;
   top: 60px;
-  border-radius: 2em;
   z-index: 10;
-  width: 17em;
-  height: 43em;
+  border-radius: 1em;
+  width: 18em;
+  min-height: 20em;
 }
 .menu a {
   font-size: 2rem;

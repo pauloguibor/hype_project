@@ -1,44 +1,7 @@
 <template>
   <div class="auth-content">
-    <div class="buttom-ramdom">
-      <b-card >
-        <h3>CRIAR URL SEM LOGIN</h3>
-        <b-form>
-          <b-row>
-            <b-col md="8">
-              <b-form-group label="Url Original: " label-for="link-url">
-                <b-form-input
-                  id="link-url"
-                  type="text"
-                  v-model="links.url"
-                  required
-                  placeholder="Informe a URL"
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col md="8">
-              <b-form-group label="Nova Url: " label-for="link-new_url">
-                <b-form-input
-                  id="link-new_url"
-                  type="text"
-                  v-model="links.new_url"
-                  :readonly="true"
-                  required
-                  placeholder="Informe a Nova URL"
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-          </b-row>
-          <b-button variant="primary" @click="createurl"> Criar </b-button>
-
-          <b-button variant="warning" @click="reset">Cancelar</b-button>
-        </b-form>
-        <hr />
-      </b-card>
-    </div>
-
     <div class="auth-modal">
-      <img src="@/assets/logo.png" width="200" alt="logo" />
+      <img src="@/assets/acme_logo.png" width="200" alt="logo" />
       <hr />
       <div class="auth-title">
         <b>{{ showSignup ? "Cadastro" : "Login" }}</b>
@@ -99,7 +62,6 @@ export default {
           password: this.user.password,
         })
         .then((response) => {
-          console.log(response);
           this.$store.commit("setUser", response.data);
           if (response.data.accessToken) {
             localStorage.setItem(userKey, JSON.stringify(response.data));
@@ -108,7 +70,6 @@ export default {
           return response.data;
         })
         .catch(response => {
-          console.log(response.message)
         });
     },
     register() {
@@ -145,7 +106,6 @@ export default {
           url: this.links.url,
         })
         .then((res) => {
-          console.log(res)
          this.links.new_url = res.data.new_url
         })
     }

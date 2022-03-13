@@ -16,7 +16,7 @@ export default {
   props: ["title", "value", "icon", "color"],
   computed: {
     style() {
-      return "color " + (this.color || "#000");
+      return "color: " + (this.color || "#000");
     },
   },
 };

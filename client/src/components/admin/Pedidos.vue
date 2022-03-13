@@ -22,7 +22,7 @@
       </b-form>
       <hr />
     </b-card>
-    <b-table hover striped :items="links" :fields="fields">
+    <b-table hover striped :items="pedidos" :fields="fields">
       <template slot="actions" slot-scope="data">
         <b-button variant="danger" @click="loadUrl(data.item)" class="mr-2">
           <i class="fa fa-trash"></i>
@@ -44,18 +44,23 @@ export default {
       links: [],
       fields: [
         { key: "id", label: "Código do Pedido", sortable: true },
-        { key: "new_url", label: "Nome do pedido", sortable: true },
-        { key: "createdAt", label: "valor", sortable: true },
+        { key: "qtd", label: "Quantidade", sortable: true },
+        { key: "valor", label: "Preço", sortable: true },
         { key: "actions", label: "Ações", sortable: true },
       ],
     };
   },
+  computed:{
+    pedidos(){
+      return this.$store.state.pedidos.pedidos
+    }
+  },
   methods: {
     loadUrls() {
       let id = JSON.parse(localStorage._knowledge_user).user.id;
-      http.get("/urls/list/" + id, { headers: authHeader() }).then((res) => {
-        this.links = res.data;
-      });
+      // http.get("/urls/list/" + id, { headers: authHeader() }).then((res) => {
+      //   this.links = res.data;
+      // });
     },
     reset() {
       this.mode = "save";
@@ -66,20 +71,20 @@ export default {
       let user = JSON.parse(localStorage._knowledge_user).user.id;
       const method = this.link.id ? "put" : "post";
       const id = this.link.id ? `/${this.link.id}` : "";
-      http[method](
-        `/urls/create${id}`,
-        {
-          url: this.link.url,
-          new_url: this.link.new_url,
-          user_id: user,
-        },
-        { headers: authHeader() }
-      )
-        .then(() => {
-          this.reset();
-          this.loadUrls();
-        })
-        .catch(showError);
+      // http[method](
+      //   `/urls/create${id}`,
+      //   {
+      //     url: this.link.url,
+      //     new_url: this.link.new_url,
+      //     user_id: user,
+      //   },
+      //   { headers: authHeader() }
+      // )
+      //   .then(() => {
+      //     this.reset();
+      //     this.loadUrls();
+      //   })
+      //   .catch(showError);
     },
     remove() {
       const id = this.link.id;
