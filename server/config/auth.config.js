@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "speedio-project-17092019"
+    secret: "hype-project-17092019"
 };
