@@ -29,12 +29,13 @@ app.get("/", (req, res) => {
 })
 
 // rotas da aplicaçao 
-app.use('/api/urls',
-    [authJwt.verifyToken],
-    controllers.url)
-app.use('/api/urlramdom', controllers.url_ramdom)
+// app.use('/api/urls',
+//     [authJwt.verifyToken],
+//     controllers.url)
+// app.use('/api/urlramdom', controllers.url_ramdom)
 app.use('/api/user', controllers.user)
 app.use('/api/auth', controllers.login)
+app.use('/api/nomes', controllers.nomes)
 
 
 
