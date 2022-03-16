@@ -69,8 +69,7 @@ export default {
           }
           return response.data;
         })
-        .catch(response => {
-        });
+
     },
     register() {
       http
@@ -118,8 +117,8 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 3em;
+  justify-content: center
+
 }
 .auth-modal {
   background-color: #fff;
